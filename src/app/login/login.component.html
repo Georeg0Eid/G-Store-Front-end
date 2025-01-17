@@ -1,0 +1,40 @@
+<div class="loginsignup">
+    <div class="loginsignup-container">
+        <h1>Login</h1>
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <div *ngIf="errorMessage" class="error-message">
+                {{ errorMessage }}
+            </div>
+
+            <div class="loginsignup-fields">
+                <input type="email" formControlName="email" placeholder="Email Address"
+                    [class.invalid]="loginForm.get('email')?.invalid && loginForm.get('email')?.touched" />
+                <div *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched" class="error-message">
+                    <p *ngIf="loginForm.get('email')?.hasError('required')">Email is required.</p>
+                    <p *ngIf="loginForm.get('email')?.hasError('email')">Please enter a valid email address.</p>
+                </div>
+
+                <input type="password" formControlName="password" placeholder="Password"
+                    [class.invalid]="loginForm.get('password')?.invalid && loginForm.get('password')?.touched" />
+                <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched"
+                    class="error-message">
+                    <p *ngIf="loginForm.get('password')?.hasError('required')">Password is required.</p>
+                    <p *ngIf="loginForm.get('password')?.hasError('minlength')">
+                        Password must be at least 6 characters long.
+                    </p>
+                </div>
+            </div>
+
+            <div class="loginsignup-remember">
+              <input type="checkbox" id="rememberMe" name="rememberMe">
+              <label for="rememberMe">Remember Me</label>
+          </div>
+
+            <button type="submit" [disabled]="loginForm.invalid">Login</button>
+
+            <p class="loginsignup-login">
+                Don't have an account? <a routerLink="/signup">Sign up here</a>
+            </p>
+        </form>
+    </div>
+</div>
