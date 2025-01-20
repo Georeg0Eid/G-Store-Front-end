@@ -35,6 +35,7 @@ export class LoginComponent implements OnInit {
         next: (response) => {
 
           const decodedToken = this.authoService.decodeAccessToken();
+          localStorage.setItem('authToken', decodedToken);
           const userType = decodedToken?.userType;
 
           if (userType === 'Admin') {

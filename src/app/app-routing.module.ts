@@ -19,23 +19,22 @@ import { DashboardGuard } from './guards/dashboard.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
-  { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
-  { path: 'men', component: MenComponent, canActivate: [AuthGuard] },
-  { path: 'women', component: WomenComponent, canActivate: [AuthGuard] },
-  { path: 'kids', component: KidsComponent, canActivate: [AuthGuard] },
-  { path: 'contact', component: ContactUsComponent, canActivate: [AuthGuard] },
-  { path: 'faq', component: FaqComponent, canActivate: [AuthGuard] },
-  { path: 'cart', component: CartComponent, canActivate: [AuthGuard] },
+  { path: 'home', component: HomeComponent },
+  { path: 'men', component: MenComponent},
+  { path: 'women', component: WomenComponent},
+  { path: 'kids', component: KidsComponent},
+  { path: 'contact', component: ContactUsComponent},
+  { path: 'faq', component: FaqComponent},
+  { path: 'cart', component: CartComponent},
   {
     path: 'product/:id',
-    component: SingelProductComponent,
-    canActivate: [AuthGuard],
+    component: SingelProductComponent
   },
   {
     path: 'dashboard',
     component: DashboardComponent,
     canActivate: [DashboardGuard],
-  },
+  }, // DashboardGuard is added to protect the dashboard route
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignUpComponent },
   { path: '**', component: NotFoundComponent },
